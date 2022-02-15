@@ -26,6 +26,7 @@ class EntityAdmin(admin.ModelAdmin):
         'uploader',
         'publication_date',
         'rating_n_ratings',
+        'tournesol_score',
         'rating_n_contributors',
         'language',
         'link_to_youtube',

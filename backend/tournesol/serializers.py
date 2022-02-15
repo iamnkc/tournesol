@@ -42,6 +42,7 @@ class VideoSerializer(ModelSerializer):
             "uploader",
             "language",
             "rating_n_ratings",
+            "tournesol_score",
             "rating_n_contributors",
             "duration",
         ]
@@ -53,6 +54,7 @@ class VideoSerializer(ModelSerializer):
             "uploader",
             "language",
             "rating_n_ratings",
+            "tournesol_score",
             "rating_n_contributors",
             "duration",
         ]
@@ -203,12 +205,15 @@ class ComparisonSerializer(ComparisonSerializerMixin, ModelSerializer):
             entity_2=video_2,
             **validated_data,
         )
+        
+        video_1.tournesol_score=2
+        video_2.tournesol_score=2
 
         for criteria_score in criteria_scores:
             ComparisonCriteriaScore.objects.create(
                 comparison=comparison, **criteria_score
             )
-
+         
         return comparison
 
 

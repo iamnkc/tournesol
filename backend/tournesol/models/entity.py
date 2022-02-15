@@ -119,6 +119,13 @@ class Entity(models.Model):
         "from certified contributors",
     )
 
+    tournesol_score = models.IntegerField(
+        null=False,
+        default=0,
+        help_text="Total number of pairwise comparisons for this video"
+        "from certified contributors",
+    )
+
     # TODO
     # the following fields should be moved in a n-n relation with Poll
     rating_n_contributors = models.IntegerField(
