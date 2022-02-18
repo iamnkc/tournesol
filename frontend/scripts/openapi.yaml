@@ -2876,11 +2876,6 @@ components:
           readOnly: true
           description: Total number of pairwise comparisons for this videofrom certified
             contributors
-        tournesol_score:
-          type: number
-          format: float
-          readOnly: true
-          description: Tournesol Scorefrom certified contributors
         rating_n_contributors:
           type: integer
           readOnly: true
@@ -2897,7 +2892,6 @@ components:
       - publication_date
       - rating_n_contributors
       - rating_n_ratings
-      - tournesol_score
       - uploader
       - video_id
       - views
@@ -3647,11 +3641,6 @@ components:
           readOnly: true
           description: Total number of pairwise comparisons for this videofrom certified
             contributors
-        tournesol_score:
-          type: number
-          format: float
-          readOnly: true
-          description: Tournesol Scorefrom certified contributors
         rating_n_contributors:
           type: integer
           readOnly: true
@@ -3668,7 +3657,6 @@ components:
       - publication_date
       - rating_n_contributors
       - rating_n_ratings
-      - tournesol_score
       - uploader
       - video_id
       - views
@@ -3743,10 +3731,6 @@ components:
           minimum: -2147483648
           description: Total number of pairwise comparisons for this videofrom certified
             contributors
-        tournesol_score:
-          type: number
-          format: float
-          description: Tournesol Scorefrom certified contributors
         rating_n_contributors:
           type: integer
           maximum: 2147483647
