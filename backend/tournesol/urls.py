@@ -9,7 +9,9 @@ from rest_framework import routers
 
 from .views import ComparisonDetailApi, ComparisonListApi, ComparisonListFilteredApi
 from .views.email_domains import EmailDomainsList
+from .views.entities import EntitiesViewSet
 from .views.exports import ExportAllView, ExportComparisonsView, ExportPublicComparisonsView
+from .views.polls import PollsRecommendationsView, PollsView
 from .views.ratings import (
     ContributorRatingDetail,
     ContributorRatingList,
@@ -21,7 +23,8 @@ from .views.video import VideoViewSet
 from .views.video_rate_later import VideoRateLaterDetail, VideoRateLaterList
 
 router = routers.DefaultRouter()
-router.register(r'video', VideoViewSet)
+router.register(r'video', VideoViewSet, basename="video")
+router.register(r'entities', EntitiesViewSet)
 
 app_name = "tournesol"
 urlpatterns = [
@@ -54,12 +57,12 @@ urlpatterns = [
         name="poll_comparisons_me_list",
     ),
     path(
-        "users/me/comparisons/<str:poll_name>/<str:video_id>/",
+        "users/me/comparisons/<str:poll_name>/<str:uid>/",
         ComparisonListFilteredApi.as_view(),
         name="poll_comparisons_me_list_filtered",
     ),
     path(
-        "users/me/comparisons/<str:poll_name>/<str:video_id_a>/<str:video_id_b>/",
+        "users/me/comparisons/<str:poll_name>/<str:uid_a>/<str:uid_b>/",
         ComparisonDetailApi.as_view(),
         name="poll_comparisons_me_detail",
     ),
@@ -101,5 +104,16 @@ urlpatterns = [
         "stats/",
         StatisticsView.as_view(),
         name="statistics_detail"
-     )
+    ),
+    # Polls API
+    path(
+        "polls/<str:name>/",
+        PollsView.as_view(),
+        name="polls_detail"
+    ),
+    path(
+        "polls/<str:name>/recommendations/",
+        PollsRecommendationsView.as_view(),
+        name="polls_recommendations"
+    ),
 ]
