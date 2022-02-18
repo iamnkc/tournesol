@@ -205,9 +205,6 @@ class ComparisonSerializer(ComparisonSerializerMixin, ModelSerializer):
             entity_2=video_2,
             **validated_data,
         )
-        
-        video_1.tournesol_score=2
-        video_2.tournesol_score=2
 
         for criteria_score in criteria_scores:
             ComparisonCriteriaScore.objects.create(

@@ -32,6 +32,7 @@ const convertDurationToClockDuration = (duration) => {
 
 
 const calculateScore= (video) => {
+  console.log(video)
   let total_score=0
   if ('criteria_scores' in video) {
     video.criteria_scores?.forEach((criteria) => {
