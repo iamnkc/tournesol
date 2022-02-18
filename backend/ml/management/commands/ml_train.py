@@ -9,6 +9,7 @@ from tournesol.models import (
     ContributorRating,
     ContributorRatingCriteriaScore,
     EntityCriteriaScore,
+    Entity,
     Poll,
 )
 
@@ -79,7 +80,14 @@ def save_data(video_scores, contributor_rating_scores):
     Saves in the scores for Entities and ContributorRatings
     """
     EntityCriteriaScore.objects.all().delete()
+    for video_id, criteria, score, uncertainty in video_scores:
+       video=EntityCriteriaScore(entity_id=video_id).entity
+       video.tournesol_score+=10*score
+       video.save(update_fields=["tournesol_score"])
     EntityCriteriaScore.objects.bulk_create(
+
+        
+        
         [
             EntityCriteriaScore(
                 entity_id=video_id,

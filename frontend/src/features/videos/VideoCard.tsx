@@ -188,7 +188,7 @@ function VideoCard({
   const theme = useTheme();
   const classes = useStyles();
   const videoId = video.video_id;
-  let total_score = 0;
+  const total_score = video.tournesol_score ? video.tournesol_score : 0;
   let max_score = -Infinity;
   let min_score = Infinity;
   let max_criteria = '';
@@ -201,7 +201,6 @@ function VideoCard({
 
   if ('criteria_scores' in video) {
     video.criteria_scores?.forEach((criteria) => {
-      total_score += criteria.score != undefined ? 10 * criteria.score : 0;
       if (
         criteria.score != undefined &&
         criteria.score > max_score &&

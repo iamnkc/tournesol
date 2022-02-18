@@ -119,10 +119,10 @@ class Entity(models.Model):
         "from certified contributors",
     )
 
-    tournesol_score = models.IntegerField(
+    tournesol_score = models.FloatField(
         null=False,
         default=0,
-        help_text="Total number of pairwise comparisons for this video"
+        help_text="Tournesol Score"
         "from certified contributors",
     )
 
